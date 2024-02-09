@@ -4,7 +4,7 @@ import * as C from './styles';
 const Button = ({ Text, onClick, Type = "button" }) => {
     return (
         <C.Button type={Type} onClick={onClick}>
-        {Text}
+            {Text}
         </C.Button>
     );
 };
