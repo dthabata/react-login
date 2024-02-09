@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
+import axios from 'axios';
 
 export const AuthContext = createContext({});
 
@@ -19,21 +20,45 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const signin = (email, password) => {
-        const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
-        const hasUser = usersStorage?.filter((user) => user.email === email);
-
-        if (hasUser?.length) {
-            if (hasUser[0].email === email && hasUser[0].password === password) {
-            const token = Math.random().toString(36).substring(2);
-            localStorage.setItem("user_token", JSON.stringify({ email, token }));
-            setUser({ email, password });
-            return;
-            } else {
-            return "E-mail ou senha incorretos";
-            }
-        } else {
-            return "Usuário(a) não cadastrado";
+        const loginUser = {
+            email: email,
+            password: password,
         }
+
+        console.log("================= request");
+        console.log(loginUser)
+
+        axios.post("http://localhost:5000/api-user/login", loginUser)
+        .then((response) => {
+            console.log("==== RESPONSE:");
+            console.log(response.data);
+            console.log("==========");
+            if (response.data['status'] === true){
+                localStorage.setItem("token", response.data['token']);
+                return true;
+            }
+            return false;
+            
+        })
+        .catch((error) => {
+            console.log(error, "DEEEEU ERRROOOO!!!!");
+        })
+
+        // const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
+        // const hasUser = usersStorage?.filter((user) => user.email === email);
+
+        // if (hasUser?.length) {
+        //     if (hasUser[0].email === email && hasUser[0].password === password) {
+        //     const token = Math.random().toString(36).substring(2);
+        //     localStorage.setItem("user_token", JSON.stringify({ email, token }));
+        //     setUser({ email, password });
+        //     return;
+        //     } else {
+        //     return "E-mail ou senha incorretos";
+        //     }
+        // } else {
+        //     return "Usuário(a) não cadastrado";
+        // }
     };
 
     const signup = (email, password) => {
