@@ -30,6 +30,7 @@ export const Label = styled.label`
 `;
 
 export const LabelSignin = styled.label`
+    margin-top: 20px;
     font-size: 16px;
     color: #676767;
 `;
