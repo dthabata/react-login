@@ -6,7 +6,7 @@ export const AuthContext = createContext({});
 export const AuthProvider = ({ children }) => {
 
     const signup = (email, password) => {
-        
+
         //TODO: Pegar valores, montar no objeto. Fazer chamada axios
         //TODO: Pegar retorno da chamada: se for sucesso, mandar pra login
         //TODO: Se for erro, avisar que deu o erro e qual foi o mesmo
