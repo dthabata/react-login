@@ -1,67 +1,19 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext } from 'react';
 import axios from 'axios';
 
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState();
-
-    useEffect(() => {
-        const userToken = localStorage.getItem("user_token");
-        const usersStorage = localStorage.getItem("users_db");
-
-        if (userToken && usersStorage) {
-            const hasUser = JSON.parse(usersStorage)?.filter(
-                (user) => user.email === JSON.parse(userToken).email
-            );
-
-            if (hasUser) setUser(hasUser[0]);
-        }
-    }, []);
-
-    const signin = (email, password) => {
-        const loginUser = {
-            email: email,
-            password: password,
-        }
-
-        console.log("================= request");
-        console.log(loginUser)
-
-        axios.post("http://localhost:5000/api-user/login", loginUser)
-        .then((response) => {
-            console.log("==== RESPONSE:");
-            console.log(response.data);
-            console.log("==========");
-            if (response.data['status'] === true){
-                localStorage.setItem("token", response.data['token']);
-                return true;
-            }
-            return false;
-            
-        })
-        .catch((error) => {
-            console.log(error, "DEEEEU ERRROOOO!!!!");
-        })
-
-        // const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
-        // const hasUser = usersStorage?.filter((user) => user.email === email);
-
-        // if (hasUser?.length) {
-        //     if (hasUser[0].email === email && hasUser[0].password === password) {
-        //     const token = Math.random().toString(36).substring(2);
-        //     localStorage.setItem("user_token", JSON.stringify({ email, token }));
-        //     setUser({ email, password });
-        //     return;
-        //     } else {
-        //     return "E-mail ou senha incorretos";
-        //     }
-        // } else {
-        //     return "Usuário(a) não cadastrado";
-        // }
-    };
 
     const signup = (email, password) => {
+        
+        //TODO: Pegar valores, montar no objeto. Fazer chamada axios
+        //TODO: Pegar retorno da chamada: se for sucesso, mandar pra login
+        //TODO: Se for erro, avisar que deu o erro e qual foi o mesmo
+
+        //TODO: Uma vez isso funcionando, tirar essa função também do contexto para tirar Context
+
+        console.log("teste");
         const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
         const hasUser = usersStorage?.filter((user) => user.email === email);
     
@@ -82,13 +34,8 @@ export const AuthProvider = ({ children }) => {
         return;
     };
 
-    const signout = () => {
-        setUser(null);
-        localStorage.removeItem("user_token");
-    };
-
     return (
-        <AuthContext.Provider value={{ user, signed: !!user, signin, signup, signout }}>
+        <AuthContext.Provider value={{signup}}>
             {children}
         </AuthContext.Provider>
     );
