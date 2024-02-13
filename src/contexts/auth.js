@@ -10,7 +10,6 @@ export const AuthProvider = ({ children }) => {
         //TODO: Pegar valores, montar no objeto. Fazer chamada axios
         //TODO: Pegar retorno da chamada: se for sucesso, mandar pra login
         //TODO: Se for erro, avisar que deu o erro e qual foi o mesmo
-
         //TODO: Uma vez isso funcionando, tirar essa função também do contexto para tirar Context
 
         console.log("teste");
