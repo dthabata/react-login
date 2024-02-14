@@ -32,10 +32,8 @@ const Signup = () => {
             if (response.data['status'] === true) {
                 alert("Usuário cadatrado com sucesso!");
                 navigate("/signin");
-                // return true
             } else {
                 setError(response.data['message']);
-                // return false;
             }
         })
         .catch((error) => {
@@ -55,19 +53,6 @@ const Signup = () => {
     }
 
     await signup(name, email, senha);
-
-    // let isRegisted = await signup(name, email, senha);
-
-    // console.log(isRegisted);
-
-    // if (isRegisted) {
-    //     alert("Usuário cadatrado com sucesso!");
-    //     navigate("/signin");
-    //     return;
-    // } else {
-    //     setError("Falha ao cadastrar usuário(a)");
-    // }
-    
     };
 
     return (
