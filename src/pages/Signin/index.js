@@ -59,7 +59,7 @@ const Signin = () => {
     return (
         <C.Container>
             <C.Label>
-                Login
+                Signin
             </C.Label>
             <C.Content>
                 <Input
