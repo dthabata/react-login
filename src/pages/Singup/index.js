@@ -32,7 +32,7 @@ const Signup = () => {
             if (response.data['status'] === true) {
                 alert("Usuário cadatrado com sucesso!");
                 navigate("/signin");
-                // return true
+                // return true;
             } else {
                 setError(response.data['message']);
                 // return false;
