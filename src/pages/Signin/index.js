@@ -36,7 +36,6 @@ const Signin = () => {
             if (response.data['status'] === true){
                 localStorage.setItem("token", response.data['token']);
                 localStorage.setItem("name", response.data['name']);
-                console.log("qualquer coisa para teste 2");
                 return true;
             }
             return false;
@@ -45,8 +44,6 @@ const Signin = () => {
             console.log(error, "DEU ERRO!");
             return false;        
         })
-    
-        console.log("usuário(a) logou:", isSigned);
         
         if (isSigned) {
             navigate("/home");

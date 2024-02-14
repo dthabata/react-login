@@ -30,12 +30,10 @@ const Signup = () => {
             console.log(response.data);
             console.log("==========");
             if (response.data['status'] === true) {
-                alert("Usuário cadatrado com sucesso!");
-                navigate("/signin");
-                // return true;
+                return true;
             } else {
                 setError(response.data['message']);
-                // return false;
+                return false;
             }
         })
         .catch((error) => {
@@ -46,28 +44,23 @@ const Signup = () => {
     };
 
     const handleSignup = async () => {
-    if (!email | !emailConf | !senha) {
-        setError("Preencha todos os campos");
-    return;
-    } else if (email !== emailConf) {
-        setError("Os e-mails não são iguais");
-    return;
-    }
+        if (!email | !emailConf | !senha) {
+            setError("Preencha todos os campos");
+            return;
+        } else if (email !== emailConf) {
+            setError("Os e-mails não são iguais");
+            return;
+        }
 
-    await signup(name, email, senha);
-
-    // let isRegisted = await signup(name, email, senha);
-
-    // console.log(isRegisted);
-
-    // if (isRegisted) {
-    //     alert("Usuário cadatrado com sucesso!");
-    //     navigate("/signin");
-    //     return;
-    // } else {
-    //     setError("Falha ao cadastrar usuário(a)");
-    // }
-    
+        try {
+            await signup(name, email, senha);
+            alert("Usuário cadatrado com sucesso!");
+            navigate("/signin");
+            return;
+        } catch(err) {
+            console.log(err);
+            setError("Falha ao cadastrar usuário(a), verifique se este e-mail já não foi cadastrado");
+        }
     };
 
     return (
