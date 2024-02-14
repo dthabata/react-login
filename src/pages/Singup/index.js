@@ -23,24 +23,18 @@ const Signup = () => {
             email: email,
             password: password,
         }
-    
-        await axios.post("http://localhost:5000/api-user/register", registerUser)
-        .then((response) => {
-            console.log("==== RESPONSE:");
-            console.log(response.data);
-            console.log("==========");
+
+        try {
+            const response = await axios.post("http://localhost:5000/api-user/register", registerUser);
             if (response.data['status'] === true) {
                 return true;
             } else {
-                setError(response.data['message']);
                 return false;
             }
-        })
-        .catch((error) => {
-            console.log(error, "DEU ERRO!");
-            setError(error);
-            return false;        
-        })
+        } catch (err) {
+            console.error(err);
+            return false;
+        }
     };
 
     const handleSignup = async () => {
@@ -52,15 +46,14 @@ const Signup = () => {
             return;
         }
 
-        //TODO: tratar corretamente o front em sucesso e erro
-        try {
-            await signup(name, email, senha);
+        const isSuccess = await signup(name, email, senha);
+        if (isSuccess) {
             alert("Usuário cadatrado com sucesso!");
             navigate("/signin");
             return;
-        } catch(err) {
-            console.log(err);
-            setError("Falha ao cadastrar usuário(a), verifique se este e-mail já não foi cadastrado");
+        }
+        else{
+            setError("Erro. Verifique se o e-mail já está em uso");
         }
     };
 
