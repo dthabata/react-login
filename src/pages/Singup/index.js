@@ -52,6 +52,7 @@ const Signup = () => {
             return;
         }
 
+        //TODO: tratar corretamente o front em sucesso e erro
         try {
             await signup(name, email, senha);
             alert("Usuário cadatrado com sucesso!");
