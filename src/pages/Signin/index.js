@@ -25,9 +25,6 @@ const Signin = () => {
             password: senha,
         }
 
-        console.log("================= REQUEST:");
-        console.log(loginUser)
-
         let isSigned = await axios.post("http://localhost:5000/api-user/login", loginUser)
         .then((response) => {
             console.log("==== RESPONSE:");
