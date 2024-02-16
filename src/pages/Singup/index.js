@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import { Link, useNavigate } from 'react-router-dom';
-// import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
 import * as C from './styles';
 
 const Signup = () => {
-    // const { signup } = useAuth();
     const navigate = useNavigate();
 
     const [name, setName] = useState("");
