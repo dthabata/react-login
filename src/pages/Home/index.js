@@ -54,7 +54,7 @@ const Home = () => {
             <C.Table>
                 <ul id="lista">
                     {animalTable.map((animal) => 
-                        <li key="{animal.id}">{ animal.name }</li>
+                        <li key="{animal.id}">{animal.name}</li>
                     )}
                 </ul>
             </C.Table>
