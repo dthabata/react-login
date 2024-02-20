@@ -30,7 +30,11 @@ export const Label = styled.label`
 `;
 
 export const LabelSignup = styled.label`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 20px;
+    gap: 10px;
     font-size: 16px;
     color: #676767;
 `;
