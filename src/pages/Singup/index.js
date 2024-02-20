@@ -15,7 +15,6 @@ const Signup = () => {
     const [error, setError] = useState("");
 
     const signup = async (name, email, password) => {
-
         const registerUser = {
             name: name,
             email: email,
@@ -45,6 +44,7 @@ const Signup = () => {
         }
 
         const isSuccess = await signup(name, email, senha);
+
         if (isSuccess) {
             alert("Usuário cadatrado com sucesso!");
             navigate("/signin");

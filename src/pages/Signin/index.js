@@ -12,7 +12,7 @@ const Signin = () => {
     const [senha, setSenha] = useState("");
     const [error, setError] = useState("");
 
-    const  handleLogin = async () => {
+    const  handleLogin = () => {
         if (!email | !senha) {
             setError("Preencha todos os campos");
             return;
@@ -23,28 +23,20 @@ const Signin = () => {
             password: senha,
         }
 
-        let isSigned = await axios.post("http://localhost:5000/api-user/login", loginUser)
+        axios.post("http://localhost:5000/api-user/login", loginUser)
         .then((response) => {
-            console.log("==== RESPONSE:");
-            console.log(response.data);
-            console.log("==========");
             if (response.data['status'] === true){
                 localStorage.setItem("token", response.data['token']);
                 localStorage.setItem("name", response.data['name']);
+                navigate("/home");
                 return true;
             }
             return false;
         })
         .catch((error) => {
-            console.log(error, "DEU ERRO!");
-            return false;        
+            console.log(error);
+            setError("Usuário(a) ou senha inválidos");
         })
-        
-        if (isSigned) {
-            navigate("/home");
-        }
-
-        setError("Usuário(a) ou senha inválidos");
         return;
     };
 
