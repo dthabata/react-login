@@ -17,15 +17,22 @@ export const Header = styled.div`
 export const ButtonsRow = styled.div`
     display: flex;
     align-items: center;
-    flex-direction: row-reverse;
+    flex-direction: row;
+    justify-content: center;
     gap: 10px;
+    margin-top: 10px;
 `;
 
-export const Button = styled.div``;
+export const Button = styled.div`
+`;
 
-export const Title = styled.h3``;
+export const Title = styled.h3`
+    margin-top: -10px;
+`;
 
-export const Subtitle = styled.p``;
+export const Subtitle = styled.p`
+    margin-top: -10px;
+`;
 
 export const Table = styled.div`
     display: flex;
@@ -34,5 +41,4 @@ export const Table = styled.div`
     width: 100%;
     padding: 10px;
     margin-left: 10px;
-    cursor: pointer;
 `;

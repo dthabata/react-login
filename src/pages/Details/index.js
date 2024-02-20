@@ -4,12 +4,12 @@ import Button from '../../components/Button';
 import axios from 'axios';
 import * as C from './styles';
 
-const Home = () => {
+const Details = () => {
     const navigate = useNavigate();
 
     const [username, setUsername] = useState("");
-    const [animalTable, setAnimalTable] = useState([]);
-    
+    const [animalDetail, setAnimalDetail] = useState([]);
+
     const signout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("name");
@@ -17,20 +17,22 @@ const Home = () => {
 
     useEffect(() => {
         setUsername(localStorage.name);
-        handleDatabase();
+        handleAnimalDetail();
     }, []);
 
-    const handleDatabase = () => {
+    const handleAnimalDetail = () => {
         axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem("token")}`;
     
-        axios.get("http://localhost:5000/api-animal/getList")
-            .then((response) => {
-                console.log(response.data);
-                setAnimalTable(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
+        const url = "http://localhost:5000/api-animal/getById";
+
+        axios.get(`${url}/1`)
+        .then((response) => {
+            console.log(response.data);
+            setAnimalDetail(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
     };
 
     return (
@@ -43,25 +45,23 @@ const Home = () => {
                             Sair
                         </Button>
                     </C.Button>
-                    <C.Button>
-                        <Button Text="Cadastrar" onClick={() => [signout(), navigate("/")]}>
-                            Cadastrar novo animal
-                        </Button>
-                    </C.Button>
                 </C.ButtonsRow>
             </C.Header>
-            <C.Subtitle>Temos {animalTable.length} animais no banco de dados.</C.Subtitle>
+            <C.Subtitle>Esses são os detalhes do animal selecionado:</C.Subtitle>
             <C.Table>
-                <ul id="lista">
-                    {animalTable.map((animal) =>
-                        <li key={animal.id}>
-                            <a href="/details" key={animal.id}>{animal.name}</a>
-                        </li>
-                    )}
-                </ul>   
+                <ul>
+                    <li><b>Nome:</b> {animalDetail.name}</li>
+                    <li><b>Cor:</b> {animalDetail.color}</li>
+                    <li><b>Raça:</b> {animalDetail.breed}</li>
+                    <li><b>Idade:</b> {animalDetail.age}</li>
+                </ul>
             </C.Table>
+            <C.ButtonsRow>
+                <Button Text="Editar" />
+                <Button Text="Deletar" />
+            </C.ButtonsRow>
         </C.Container>
     );
 };
 
-export default Home;
+export default Details;
