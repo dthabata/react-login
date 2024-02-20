@@ -27,13 +27,14 @@ export const Label = styled.label`
     font-size: 18px;
     font-weight: 600;
     color: #676767;
+    margin-bottom: 20px;
 `;
 
 export const LabelSignup = styled.label`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
     gap: 10px;
     font-size: 16px;
     color: #676767;
