@@ -5,7 +5,6 @@ import axios from 'axios';
 import * as C from './styles';
 
 const Home = () => {
-
     const navigate = useNavigate();
 
     const [username, setUsername] = useState("");
