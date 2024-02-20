@@ -27,10 +27,11 @@ export const Title = styled.h3``;
 
 export const Subtitle = styled.p``;
 
-export const Table = styled.div`
+export const Table = styled.p`
     display: flex;
     align-items: center;
     justify-content: initial;
     width: 100%;
-    padding: 20px;
+    padding: 10px;
+    margin-left: 10px;
 `;

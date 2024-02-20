@@ -37,7 +37,7 @@ const Home = () => {
     return (
         <C.Container>
             <C.Header>
-                <C.Title>Olá, {username}! Temos {animalTable.length} animais no banco de dados.</C.Title>
+                <C.Title>Olá, {username}!</C.Title>
                 <C.ButtonsRow>
                     <C.Button>
                         <Button Text="Sair" onClick={() => [signout(), navigate("/")]}>
@@ -51,9 +51,12 @@ const Home = () => {
                     </C.Button>
                 </C.ButtonsRow>
             </C.Header>
+            <C.Subtitle>Temos {animalTable.length} animais no banco de dados.</C.Subtitle>
             <C.Table>
                 <ul id="lista">
-                    { animalTable.map( (animal) => <li key="{animal.id}"><p>{ animal.name }</p></li>) }
+                    {animalTable.map((animal) => 
+                        <li key="{animal.id}">{ animal.name }</li>
+                    )}
                 </ul>
             </C.Table>
         </C.Container>
