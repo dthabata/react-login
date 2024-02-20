@@ -27,7 +27,7 @@ export const Title = styled.h3``;
 
 export const Subtitle = styled.p``;
 
-export const Table = styled.table`
+export const Table = styled.div`
     display: flex;
     align-items: center;
     justify-content: initial;

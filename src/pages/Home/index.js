@@ -1,23 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
+import axios from 'axios';
 import * as C from './styles';
 
 const Home = () => {
 
+    const navigate = useNavigate();
+
+    const [username, setUsername] = useState("");
+    const [animalTable, setAnimalTable] = useState([]);
+    
     const signout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("name");
     };
 
-    const user = localStorage.name;
+    useEffect(() => {
+        setUsername(localStorage.name);
+        handleDatabase();
+    }, []);
 
-    const navigate = useNavigate();
+    const handleDatabase = () => {
+        axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem("token")}`;
+    
+        axios.get("http://localhost:5000/api-animal/getList")
+            .then((response) => {
+                console.log(response.data);
+                setAnimalTable(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    };
 
     return (
         <C.Container>
             <C.Header>
-                <C.Title>Olá, {user}!</C.Title>
+                <C.Title>Olá, {username}! Temos {animalTable.length} animais no banco de dados.</C.Title>
                 <C.ButtonsRow>
                     <C.Button>
                         <Button Text="Sair" onClick={() => [signout(), navigate("/")]}>
@@ -31,21 +51,9 @@ const Home = () => {
                     </C.Button>
                 </C.ButtonsRow>
             </C.Header>
-            <C.Subtitle>Esses são os animais cadastrados em nosso banco de dados:</C.Subtitle>
             <C.Table>
                 <ul id="lista">
-                    <li>
-                        <p>Animal 1</p>
-                    </li>
-                    <li>
-                        <p>Animal 2</p>
-                    </li>
-                    <li>
-                        <p>Animal 3</p>
-                    </li>
-                    <li>
-                        <p>Animal 4</p>
-                    </li>
+                    { animalTable.map( (animal) => <li key="{animal.id}"><p>{ animal.name }</p></li>) }
                 </ul>
             </C.Table>
         </C.Container>
