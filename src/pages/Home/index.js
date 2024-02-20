@@ -33,6 +33,10 @@ const Home = () => {
             })
     };
 
+    const openDetail = (id) =>{
+        navigate(`/details/${id}`);
+    }
+
     return (
         <C.Container>
             <C.Header>
@@ -54,8 +58,8 @@ const Home = () => {
             <C.Table>
                 <ul id="lista">
                     {animalTable.map((animal) =>
-                        <li key={animal.id}>
-                            <a href="/details" key={animal.id}>{animal.name}</a>
+                        <li key={animal.id} onClick={() => [openDetail(animal.id)]}>
+                            {animal.name}
                         </li>
                     )}
                 </ul>   

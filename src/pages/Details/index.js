@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import * as C from './styles';
 
 const Details = () => {
     const navigate = useNavigate();
-
+    
     const [username, setUsername] = useState("");
     const [animalDetail, setAnimalDetail] = useState([]);
-
+    
+    let { id } = useParams();
+    
     const signout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("name");
@@ -18,6 +21,7 @@ const Details = () => {
     useEffect(() => {
         setUsername(localStorage.name);
         handleAnimalDetail();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleAnimalDetail = () => {
@@ -25,7 +29,7 @@ const Details = () => {
     
         const url = "http://localhost:5000/api-animal/getById";
 
-        axios.get(`${url}/1`)
+        axios.get(`${url}/${id}`)
         .then((response) => {
             console.log(response.data);
             setAnimalDetail(response.data);
