@@ -53,7 +53,7 @@ const Home = () => {
             <C.Subtitle>Temos {animalTable.length} animais no banco de dados.</C.Subtitle>
             <C.Table>
                 <ul id="lista">
-                    {animalTable.map((animal) => 
+                    {animalTable.map((animal) =>
                         <li key="{animal.id}">{animal.name}</li>
                     )}
                 </ul>
