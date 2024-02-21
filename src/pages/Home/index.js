@@ -25,7 +25,6 @@ const Home = () => {
     
         axios.get("http://localhost:5000/api-animal/getList")
             .then((response) => {
-                console.log(response.data);
                 setAnimalTable(response.data);
             })
             .catch((error) => {
@@ -58,8 +57,8 @@ const Home = () => {
             <C.Subtitle>Clique em um deles para visualizar seus detalhes:</C.Subtitle>
             <C.Table>
                 <ul id="lista">
-                    {animalTable.map((animal) =>
-                        <C.AnimalList>
+                    {animalTable.map((animal, index) =>
+                        <C.AnimalList key={index}>
                             <li key={animal.id} onClick={() => [openDetail(animal.id)]}>
                                 {animal.name}
                             </li>

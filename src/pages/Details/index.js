@@ -31,7 +31,6 @@ const Details = () => {
 
         axios.get(`${url}/${id}`)
         .then((response) => {
-            console.log(response.data);
             setAnimalDetail(response.data);
         })
         .catch((error) => {

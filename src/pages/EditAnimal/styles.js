@@ -14,6 +14,10 @@ export const Header = styled.div`
     width: 100%;
 `;
 
+export const Title = styled.h3`
+    margin-top: -10px;
+`;
+
 export const ButtonsRow = styled.div`
     display: flex;
     align-items: center;
@@ -26,24 +30,30 @@ export const ButtonsRow = styled.div`
 export const Button = styled.div`
 `;
 
-export const Title = styled.h3`
-    margin-top: -10px;
-`;
-
 export const Subtitle = styled.p`
     margin-top: -10px;
     margin-bottom: 5px;
 `;
 
-export const Table = styled.div`
+export const Content = styled.div`
+    gap: 15px;
     display: flex;
     align-items: center;
-    justify-content: initial;
+    justify-content: center;
+    flex-direction: column;
     width: 100%;
-    padding: 10px;
-    margin-left: 10px;
+    box-shadow: 0 1px 2px #0003;
+    background-color: white;
+    max-width: 350px;
+    padding: 20px;
+    border-radius: 5px;
+
+    Button {
+        margin-bottom: 10px;
+    }
 `;
 
-export const AnimalDetailList = styled.li`
-    margin-bottom: 15px;
+export const LabelError = styled.label`
+    font-size: 14px;
+    color: red;
 `;
