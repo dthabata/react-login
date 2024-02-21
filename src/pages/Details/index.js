@@ -59,10 +59,10 @@ const Details = () => {
             <C.Subtitle>Esses são os detalhes do animal selecionado:</C.Subtitle>
             <C.Table>
                 <ul>
-                    <li><b>Nome:</b> {animalDetail.name}</li>
-                    <li><b>Cor:</b> {animalDetail.color}</li>
-                    <li><b>Raça:</b> {animalDetail.breed}</li>
-                    <li><b>Idade:</b> {animalDetail.age}</li>
+                    <C.AnimalDetailList><b>Nome:</b> {animalDetail.name}</C.AnimalDetailList>
+                    <C.AnimalDetailList><b>Raça:</b> {animalDetail.breed}</C.AnimalDetailList>
+                    <C.AnimalDetailList><b>Cor:</b> {animalDetail.color}</C.AnimalDetailList>
+                    <C.AnimalDetailList><b>Idade:</b> {animalDetail.age}</C.AnimalDetailList>
                 </ul>
             </C.Table>
             <C.ButtonsRow>

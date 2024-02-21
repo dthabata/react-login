@@ -32,6 +32,7 @@ export const Title = styled.h3`
 
 export const Subtitle = styled.p`
     margin-top: -10px;
+    margin-bottom: 5px;
 `;
 
 export const Table = styled.div`
@@ -41,4 +42,8 @@ export const Table = styled.div`
     width: 100%;
     padding: 10px;
     margin-left: 10px;
+`;
+
+export const AnimalDetailList = styled.li`
+    margin-bottom: 15px;
 `;
