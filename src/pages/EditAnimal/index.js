@@ -69,7 +69,6 @@ const EditAnimal = () => {
 
     useEffect(() => {
         setUsername(localStorage.name);
-        editAnimal();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

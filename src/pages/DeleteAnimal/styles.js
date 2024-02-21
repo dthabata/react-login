@@ -38,26 +38,3 @@ export const Subtitle = styled.p`
 export const Content = styled.div`
     padding: 15px;
 `;
-
-export const Form = styled.div`
-    gap: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    box-shadow: 0 1px 2px #0003;
-    background-color: white;
-    max-width: 350px;
-    padding: 20px;
-    border-radius: 5px;
-
-    Button {
-        margin-bottom: 10px;
-    }
-`;
-
-export const LabelError = styled.label`
-    font-size: 14px;
-    color: red;
-`;

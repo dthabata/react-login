@@ -68,7 +68,7 @@ const DeleteAnimal = () => {
                     </C.Button>
                 </C.ButtonsRow>
             </C.Header>
-            <C.Subtitle>Você selecionou o animal tal para deletar do banco de dados. Confirme a ação apertando o botão:</C.Subtitle>
+            <C.Subtitle>Você selecionou para deletar um animal do nosso banco de dados. Confirme a ação apertando o botão:</C.Subtitle>
             <C.Content>
                 <Button Text="Deletar" onClick={handleDeleteAnimal} />
             </C.Content>
