@@ -41,4 +41,5 @@ export const Table = styled.div`
 export const AnimalList = styled.div`
     margin-bottom: 15px;
     cursor: pointer;
+    text-decoration: underline;
 `;
