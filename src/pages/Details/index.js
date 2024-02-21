@@ -45,6 +45,11 @@ const Details = () => {
                 <C.Title>Olá, {username}!</C.Title>
                 <C.ButtonsRow>
                     <C.Button>
+                        <Button Text="Voltar" onClick={() => [navigate("/home")]}>
+                            Voltar
+                        </Button>
+                    </C.Button>
+                    <C.Button>
                         <Button Text="Sair" onClick={() => [signout(), navigate("/")]}>
                             Sair
                         </Button>
