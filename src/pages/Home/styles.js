@@ -25,7 +25,9 @@ export const Button = styled.div``;
 
 export const Title = styled.h3``;
 
-export const Subtitle = styled.p``;
+export const Subtitle = styled.p`
+    margin-bottom: 10px;
+`;
 
 export const Table = styled.div`
     display: flex;
@@ -34,5 +36,9 @@ export const Table = styled.div`
     width: 100%;
     padding: 10px;
     margin-left: 10px;
+`;
+
+export const AnimalList = styled.div`
+    margin-bottom: 15px;
     cursor: pointer;
 `;

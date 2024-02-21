@@ -55,12 +55,15 @@ const Home = () => {
                 </C.ButtonsRow>
             </C.Header>
             <C.Subtitle>Temos {animalTable.length} animais no banco de dados.</C.Subtitle>
+            <C.Subtitle>Clique em um deles para visualizar seus detalhes:</C.Subtitle>
             <C.Table>
                 <ul id="lista">
                     {animalTable.map((animal) =>
-                        <li key={animal.id} onClick={() => [openDetail(animal.id)]}>
-                            {animal.name}
-                        </li>
+                        <C.AnimalList>
+                            <li key={animal.id} onClick={() => [openDetail(animal.id)]}>
+                                {animal.name}
+                            </li>
+                        </C.AnimalList>
                     )}
                 </ul>   
             </C.Table>
