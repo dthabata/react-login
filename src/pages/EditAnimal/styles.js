@@ -36,6 +36,10 @@ export const Subtitle = styled.p`
 `;
 
 export const Content = styled.div`
+    padding: 15px;
+`;
+
+export const Form = styled.div`
     gap: 15px;
     display: flex;
     align-items: center;

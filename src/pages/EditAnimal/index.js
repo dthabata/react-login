@@ -46,32 +46,34 @@ const EditAnimal = () => {
             </C.Header>
             <C.Subtitle>Edite os detalhes do animal selecionado:</C.Subtitle>
             <C.Content>
-                <Input
-                    type="text"
-                    placeholder="Nome"
-                    value={name}
-                    onChange={(e) => [setName(e.target.value), setError("")]}
-                />
-                <Input
-                    type="text"
-                    placeholder="Raça"
-                    value={breed}
-                    onChange={(e) => [setBreed(e.target.value), setError("")]}
-                />
-                <Input
-                    type="text"
-                    placeholder="Cor"
-                    value={color}
-                    onChange={(e) => [setColor(e.target.value), setError("")]}
-                />
-                <Input
-                    type="text"
-                    placeholder="Idade"
-                    value={age}
-                    onChange={(e) => [setAge(e.target.value), setError("")]}
-                />
-                <C.LabelError>{error}</C.LabelError>
-                <Button Text="Salvar" />
+                <C.Form>
+                    <Input
+                        type="text"
+                        placeholder="Nome"
+                        value={name}
+                        onChange={(e) => [setName(e.target.value), setError("")]}
+                    />
+                    <Input
+                        type="text"
+                        placeholder="Raça"
+                        value={breed}
+                        onChange={(e) => [setBreed(e.target.value), setError("")]}
+                    />
+                    <Input
+                        type="text"
+                        placeholder="Cor"
+                        value={color}
+                        onChange={(e) => [setColor(e.target.value), setError("")]}
+                    />
+                    <Input
+                        type="text"
+                        placeholder="Idade"
+                        value={age}
+                        onChange={(e) => [setAge(e.target.value), setError("")]}
+                    />
+                    <C.LabelError>{error}</C.LabelError>
+                    <Button Text="Salvar" />
+                </C.Form>
             </C.Content>
         </C.Container>
     );
