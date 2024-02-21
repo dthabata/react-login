@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home'
 import Details from '../pages/Details';
 import EditAnimal from '../pages/EditAnimal';
+import DeleteAnimal from '../pages/DeleteAnimal';
 import Signin from '../pages/Signin';
 import Signup from '../pages/Singup';
 
@@ -23,6 +24,7 @@ const RoutesApp = () => {
                     <Route exact path="/home" element={<Private Item={Home} />} />
                     <Route exact path="/details/:id" element={<Private Item={Details} />} />
                     <Route exact path="/editanimal/:id" element={<Private Item={EditAnimal} />} />
+                    <Route exact path="/deleteanimal/:id" element={<Private Item={DeleteAnimal} />} />
                     <Route path="/" element={<Signin />} />
                     <Route exact path="/signup" element={<Signup />} />
                     <Route path="*" element={<Signin />} />

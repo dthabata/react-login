@@ -42,6 +42,10 @@ const Details = () => {
         navigate(`/editanimal/${id}`);
     }
 
+    const openDelete = (id) =>{
+        navigate(`/deleteanimal/${id}`);
+    }
+
     return (
         <C.Container>
             <C.Header>
@@ -70,7 +74,7 @@ const Details = () => {
             </C.Table>
             <C.ButtonsRow>
                 <Button Text="Editar" onClick={() => [openEdit(id)]} />
-                <Button Text="Deletar" />
+                <Button Text="Deletar" onClick={() => [openDelete(id)]} />
             </C.ButtonsRow>
         </C.Container>
     );
