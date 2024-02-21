@@ -50,7 +50,7 @@ const Signup = () => {
             navigate("/signin");
             return;
         }
-        else{
+        else {
             setError("Erro. Verifique se o e-mail já está em uso");
         }
     };

@@ -10,6 +10,7 @@ const EditAnimal = () => {
     const navigate = useNavigate();
     
     const [username, setUsername] = useState("");
+
     const [name, setName] = useState("");
     const [breed, setBreed] = useState("");
     const [color, setColor] = useState("");
@@ -18,6 +19,49 @@ const EditAnimal = () => {
 
     let { id } = useParams();
 
+    const editAnimal = async (name, breed, age, color) => {
+        axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem("token")}`;
+    
+        const updateAnimal = {
+            name: name,
+            breed: breed,
+            age: age,
+            color: color,
+        }
+
+        const url = "http://localhost:5000/api-animal/update";
+
+        try {
+            const response = await axios.put(`${url}/${id}`, updateAnimal);
+            if (response.data['status'] === true) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (err) {
+            console.error(err);
+            return false;
+        }
+    };
+
+    const handleEditAnimal = async () => {
+        if (!name | !breed | !age | !color) {
+            setError("Preencha todos os campos");
+            return;
+        }
+
+        const isSuccess = await editAnimal(name, breed, age, color);
+
+        if (isSuccess) {
+            alert("Animal editado com sucesso!");
+            navigate("/home");
+            return;
+        }
+        else {
+            setError("Erro. Verifique se as informações estão corretas");
+        }
+    };
+
     const signout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("name");
@@ -25,6 +69,8 @@ const EditAnimal = () => {
 
     useEffect(() => {
         setUsername(localStorage.name);
+        editAnimal();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -60,19 +106,19 @@ const EditAnimal = () => {
                         onChange={(e) => [setBreed(e.target.value), setError("")]}
                     />
                     <Input
+                        type="number"
+                        placeholder="Idade"
+                        value={age}
+                        onChange={(e) => [setAge(e.target.value), setError("")]}
+                    />
+                    <Input
                         type="text"
                         placeholder="Cor"
                         value={color}
                         onChange={(e) => [setColor(e.target.value), setError("")]}
                     />
-                    <Input
-                        type="text"
-                        placeholder="Idade"
-                        value={age}
-                        onChange={(e) => [setAge(e.target.value), setError("")]}
-                    />
                     <C.LabelError>{error}</C.LabelError>
-                    <Button Text="Salvar" />
+                    <Button Text="Salvar" onClick={handleEditAnimal} />
                 </C.Form>
             </C.Content>
         </C.Container>
