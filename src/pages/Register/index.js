@@ -16,11 +16,9 @@ const RegisterAnimal = () => {
     const [age, setAge] = useState("");
     const [error, setError] = useState("");
 
-    const handleRegisterAnimal = (name, breed, age, color) => {
+    const handleRegisterAnimal = () => {
         axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem("token")}`;
     
-        const url = "http://localhost:5000/api-animal/create";
-
         const createAnimal = {
             name: name,
             breed: breed,
@@ -28,9 +26,22 @@ const RegisterAnimal = () => {
             color: color,
         }
 
-        axios.post(`${url}`, createAnimal)
+        const getCircularReplacer = () => {
+            const seen = new WeakSet();
+            return (value) => {
+            if (typeof value === 'object' && value !== null) {
+                if (seen.has(value)) {
+                    return;
+                }
+                seen.add(value);
+            }
+            return value;
+            };
+        };
+        
+        axios.post("http://localhost:5000/api-animal/create", createAnimal)
         .then((response) => {
-            console.log(response.data);
+            JSON.stringify(response.data, getCircularReplacer());
             alert("Animal criado com sucesso!");
             navigate("/home");
         })
