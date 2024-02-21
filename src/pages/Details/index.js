@@ -39,6 +39,10 @@ const Details = () => {
         })
     };
 
+    const openEdit = (id) =>{
+        navigate(`/editanimal/${id}`);
+    }
+
     return (
         <C.Container>
             <C.Header>
@@ -66,7 +70,7 @@ const Details = () => {
                 </ul>
             </C.Table>
             <C.ButtonsRow>
-                <Button Text="Editar" />
+                <Button Text="Editar" onClick={() => [openEdit(id)]} />
                 <Button Text="Deletar" />
             </C.ButtonsRow>
         </C.Container>
