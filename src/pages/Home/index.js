@@ -36,6 +36,10 @@ const Home = () => {
         navigate(`/details/${id}`);
     }
 
+    const openRegister = () =>{
+        navigate(`/register`);
+    }
+
     return (
         <C.Container>
             <C.Header>
@@ -47,7 +51,7 @@ const Home = () => {
                         </Button>
                     </C.Button>
                     <C.Button>
-                        <Button Text="Cadastrar" onClick={() => [signout(), navigate("/")]}>
+                        <Button Text="Cadastrar" onClick={() => [openRegister()]}>
                             Cadastrar novo animal
                         </Button>
                     </C.Button>
