@@ -78,7 +78,7 @@ const RegisterAnimal = () => {
                     </C.Button>
                 </C.ButtonsRow>
             </C.Header>
-            <C.Subtitle>Crie um novo animal para nosso banco de dados:</C.Subtitle>
+            <C.Subtitle>Crie um novo animal:</C.Subtitle>
             <C.Content>
                 <C.Form>
                     <Input
